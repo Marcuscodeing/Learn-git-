@@ -5,18 +5,15 @@ import { Task } from './models/Task';
 document.getElementById("app")?.append(
   elements.heading.primary(`Test`, 'primary'), 
   elements.heading.secondary(`Testing that the element helpers are working`),
-  elements.input(),
+  elements.input('text', 'Placeholder'),
+  elements.input('email', 'ymer.nordstrom@medieinstitutet.se', true),
+  elements.input('checkbox', true, true),
   elements.button('Button')
 );
 
-const t = [new Task('hello world')];
+const lSName = 'tasks', lS = localStorage.getItem(lSName),
+  tasks: Task[] = lS ? JSON.parse(lS).map((t: Task) => t as Task) : [new Task('hello world')];
 
-const l = localStorage.getItem('task');
+console.log(tasks);
 
-let lT: Task[] = [];
-
-if (l) {
-  lT = JSON.parse(l)?.map((t: Task) => t as Task)
-}
-
-console.log(t, lT);
+localStorage.setItem(lSName, JSON.stringify(tasks));
