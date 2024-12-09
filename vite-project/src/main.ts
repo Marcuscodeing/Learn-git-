@@ -1,7 +1,6 @@
 import './style.css';
 import { e as elements } from './helpers/elementCreationHelpers';
-import { ITask } from './models/task/ITask';
-import { Task } from './models/task/Task';
+import { Task } from './models/Task';
 
 document.getElementById("app")?.append(
   elements.heading.primary(`Test`, 'primary'), 
@@ -9,3 +8,15 @@ document.getElementById("app")?.append(
   elements.input(),
   elements.button('Button')
 );
+
+const t = [new Task('hello world')];
+
+const l = localStorage.getItem('task');
+
+let lT: Task[] = [];
+
+if (l) {
+  lT = JSON.parse(l)?.map((t: Task) => t as Task)
+}
+
+console.log(t, lT);
