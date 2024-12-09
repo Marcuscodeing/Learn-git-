@@ -30,6 +30,12 @@ export const e = (() => {
             div: (className?: string, id?: string) => {
                 return createElement('div', className, id) as HTMLDivElement;
             },
+            ul: (className?: string, id?: string) => {
+                return createElement('ul', className, id) as HTMLUListElement;
+            },
+            li: (className?: string, id?: string) => {
+                return createElement('li', className, id) as HTMLLIElement;
+            },
             span: (className?: string, id?: string) => {
                 return createElement('span', className, id) as HTMLSpanElement;
             },
