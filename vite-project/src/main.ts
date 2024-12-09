@@ -1,4 +1,5 @@
 import './style.css';
+import { Task } from './models/Task';
 import { e as elements } from './helpers/elementCreationHelpers';
 
 document.getElementById("app")?.append(
