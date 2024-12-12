@@ -1,5 +1,6 @@
 import './style.css';
 import { e as elements } from './helpers/elementCreationHelpers';
+import { Task } from './models/Task';
 
 document.getElementById("app")?.append(elements.heading.primary(`Test`, 'primary'), elements.heading.secondary(`Testing that the element helpers are working`));
 const submitButton = elements.button('btn-primary', 'submit-btn');
@@ -15,12 +16,6 @@ const list = document.createElement("ul");
 list.id = "list"
 list.style.listStyle = "none";
 document.getElementById("app")?.appendChild(list);
-
-class Task {
-constructor(public task: string,
-            public id: number = Date.now(),
-            public done: boolean = false) {} 
-}
 
 const myTodos: Task[] = [];
 
@@ -76,3 +71,26 @@ const todoListLoop = () =>{
 submitButton.addEventListener("click", () => {
         createChore();
     });
+const DEFAULT_HEADING_CLASSES = elements.settings.defaultHeadingClass.set('heading');
+
+console.log(
+    {DEFAULT_HEADING_CLASSES: DEFAULT_HEADING_CLASSES},
+    {elements_settings_defaultHeadingClass_get: elements.settings.defaultHeadingClass.get()}
+);
+
+document.getElementById("app")?.append(
+  elements.heading.primary(`Test`, 'primary'), 
+  elements.heading.secondary(`Testing that the element helpers are working`),
+  elements.input('text', 'Placeholder'),
+  elements.input('email', 'some.email@mail.com', true),
+  elements.input('checkbox', true, true),
+  elements.input('checkbox'),
+  elements.button('Button')
+);
+
+const lSName = 'tasks', lS = localStorage.getItem(lSName),
+  tasks: Task[] = lS ? JSON.parse(lS).map((t: Task) => t as Task) : [new Task('hello world')];
+
+console.log(tasks);
+
+localStorage.setItem(lSName, JSON.stringify(tasks));
