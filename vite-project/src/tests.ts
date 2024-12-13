@@ -12,15 +12,27 @@ export const t = () => {
   document.getElementById("app")?.append(
     elements.heading.primary(`Test`, 'primary'),
     elements.heading.secondary(`Testing that the element helpers are working`),
-    elements.input('text', 'Placeholder'),
-    elements.input('email', 'some.email@mail.com', true),
-    elements.input('checkbox', true),
-    elements.input('checkbox'),
+    elements.input('placeholderTest', 'text', 'Placeholder'),
+    elements.input('emailTest', 'email', 'some.email@mail.com', true),
+    elements.input('checkboxTrueTest', 'checkbox', true),
+    elements.input('checkboxFalseTest', 'checkbox'),
     elements.button('Button'),
-    elements.form([elements.input(), elements.input('email', 'some.email@mail.com'), elements.input('checkbox')], 'form', formID)
+    elements.form({
+      inputs: [
+        elements.input('basicTestInArray'),
+        elements.input('emailTestInArray', 'email', 'some.email@mail.com'),
+        elements.input('checkboxTestInArray', 'checkbox')
+      ],
+      buttons: [
+        elements.button('Secound Button')
+      ],
+      labels: [
+        elements.label('Text:', 'basicTestInArray'),
+        elements.label('Email:', 'emailTestInArray'),
+        elements.label('Checkbox:', 'checkboxTestInArray')
+      ]}, undefined, 'form', formID),
+      elements.img('/src/img/todo_list.svg', 'Todo list', 200, 200)
   );
-
-  document.getElementById(formID)?.append(elements.button('Secound Button'));
 
   const lSName = 'tasks', lS = localStorage.getItem(lSName),
   tasks: Task[] = lS ? JSON.parse(lS).map((t: Task) => t as Task) : [new Task('hello world')];
