@@ -1,5 +1,8 @@
 import './style.css';
+import { Task } from './models/Task'; //Please use this class instead of creating a new inside main. You can check usage inside /src/tests.ts
 import { t as tests } from './tests';
+
+tests();
 
 class Entodo {
   name: string;
@@ -17,5 +20,4 @@ const clean = new Entodo ("Städa")
 const meditate = new Entodo ("Meditera")
 const food = new Entodo ("Handla mat")
 
-let list: Entodo [] = [study, workout, clean, meditate, food];
-tests();
+let list = [study, workout, clean, meditate, food];
