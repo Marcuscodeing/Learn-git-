@@ -93,7 +93,7 @@ export const e = (() => {
                 checked: typeof value === 'boolean' ? value : false 
             });
         },
-        button: ( text: string, type = 'button', className?: string, id?: string) => {
+        button: (text: string, type = 'button', className?: string, id?: string) => {
             return Object.assign(createInpOrBtn('button', type, className, id) as HTMLButtonElement, {
                 innerHTML: text || ''
             });
