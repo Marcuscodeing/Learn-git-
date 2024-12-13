@@ -1,13 +1,5 @@
 import './style.css';
-import { e as elements } from './helpers/elementCreationHelpers';
-
-document.getElementById("app")?.append(
-  elements.heading.primary(`Test`, 'primary'), 
-  elements.heading.secondary(`Testing that the element helpers are working`),
-  elements.input(),
-  elements.button('Button')
-);
-
+import { t as tests } from './tests';
 
 class Entodo {
   name: string;
@@ -26,3 +18,4 @@ const meditate = new Entodo ("Meditera")
 const food = new Entodo ("Handla mat")
 
 let list: Entodo [] = [study, workout, clean, meditate, food];
+tests();
